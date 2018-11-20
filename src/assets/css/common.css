@@ -1,0 +1,53 @@
+:root{
+	--baseBlack:#333333;
+	--baseGreen:#abda58;
+	--grey9:#999999;
+	--grey6:#666666;
+	--red:#d91a1a;
+	--backlg:linear-gradient(to right,#abda58, #589f96);
+	--backGreen:#81af2f;
+	--backBlue:#2faf92;
+}
+.red{
+	color: var(--red);
+}
+.lightGrey{
+	color: var(--grey9);
+}
+.baseGreen{
+	color: var(--baseGreen)
+}
+.bgGreen{
+	background-color: var(--backGreen);
+	opacity: 0.75
+}
+.bgBlue{
+	background-color: var(--backBlue);
+	opacity: 0.75
+}
+.greenBtn{
+	background-color: var(--backGreen);
+	color: white;
+	border-radius: 20px;
+	padding: 0 12px;
+	font-size: 30px;
+}
+
+/*amap*/
+.amap-marker-label{
+	border:none;
+	background-color: rgba(0,0,0,0.3);
+	color: white;
+	border-radius: 10px;
+}
+.amap-marker-label:before{
+	content:"";
+	height: 0;
+	width: 0;
+	border-width: 15px;
+	border-style: solid;
+	border-color:  transparent rgba(0,0,0,0.3) transparent transparent;
+	position: absolute;
+	left: -30px;
+	transform: scaleY(0.5);
+}
