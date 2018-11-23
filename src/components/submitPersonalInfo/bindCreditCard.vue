@@ -8,7 +8,7 @@
 		    <selector title="银行" placeholder="选择银行" :options="list" v-model="bankType"></selector>
     	</group>
   	</div>
-  	<div class="nextStep" :class="cardNum&&bankType?'nextStepEnable':'nextStepdisable'" @click="naviToSelctPayType">
+  	<div class="nextStep" :class="cardNum&&bankType?'nextStepEnable':'nextStepdisable'" @click="naviToSetPayPassword">
   		下一步
   	</div>
   </div>
@@ -32,8 +32,8 @@ export default {
   	}
   },
   methods:{
-  	naviToSelctPayType(){
-  		this.$router.push({ path: `/submitPersonalInfo/selectPayType`});
+  	naviToSetPayPassword(){
+  		this.$router.push({ path: `/submitPersonalInfo/setPayPassword`});
   	}
   }
 }

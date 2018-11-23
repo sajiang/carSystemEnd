@@ -1,6 +1,7 @@
 :root{
 	--baseBlack:#333333;
 	--baseGreen:#abda58;
+	--border-grey:#ededed;
 	--grey9:#999999;
 	--grey6:#666666;
 	--red:#d91a1a;
@@ -16,6 +17,9 @@
 }
 .baseGreen{
 	color: var(--baseGreen)
+}
+.darkGreen{
+	color: var(--backGreen);
 }
 .bgGreen{
 	background-color: var(--backGreen);
@@ -50,4 +54,8 @@
 	position: absolute;
 	left: -30px;
 	transform: scaleY(0.5);
+}
+.amap-logo,.amap-copyright{
+	display: none !important;
+	visibility: hidden !important;
 }

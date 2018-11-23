@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="center"><span class="compelete" :class="password&&identifyCode?'':'disableBtn'">确定</span></div>
+    <div class="center"><span class="compelete" :class="password&&identifyCode?'':'disableBtn'" @click="naviToSelectBank">确定</span></div>
   </div>
 </template>
 
@@ -42,6 +42,9 @@ export default {
         }
         this.countDownNum=this.countDownNum-1;
       },1000);
+    },
+    naviToSelectBank(){
+      this.$router.push({ path: `/submitPersonalInfo/selectBank`});
     }
   }
 }

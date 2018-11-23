@@ -8,15 +8,18 @@
         <div class="tab">地图</div>
         <div class="underlineWrap" ><span class="underline"></span></div>
       </router-link>
-      <router-link class="navItem" to="/storeList">
-        <div class="tab">管理</div>
+      <router-link class="navItem" to="/manage/manageIndex">
+        <div class="tab">管理<span class="greenBadge">11</span></div>
         <div class="underlineWrap" ><span class="underline"></span></div>
       </router-link>
       <router-link class="navItem" to="/tourism">
-        <div class="tab">调车</div>
+        <div class="tab">调车<span class="greenBadge">2</span></div>
         <div class="underlineWrap" ><span class="underline"></span></div>
       </router-link>
-      <a class="contact" href=""><img class="icon" src="../assets/img/i-message.png"></a>
+      <a class="contact relative" href="">
+        <img class="icon" src="../assets/img/i-message.png">
+        <span class="badge">10</span>
+      </a>
     </div>
     <keep-alive>
       <router-view class="tabContent"/>
@@ -81,13 +84,13 @@ export default {
       line-height: 6px;
     }
     &.router-link-active{
-      color: var(--baseGreen);
+      color: var(--backGreen);
       & .underline{
         vertical-align: top;
         display: inline-block;
         width: 28px;
         height: 100%;
-        background-color: var(--baseGreen);
+        background-color: var(--backGreen);
       }
     }
   }
@@ -95,4 +98,32 @@ export default {
 .tabContent{
   height: calc(100vh - var(--navHeight));
 }
+.greenBadge{
+   display: inline-block;
+    text-align: center;
+    background: var(--backGreen);
+    color: #fff;
+    font-size: 24px;
+    border-radius: 16px;
+    line-height: 32px;
+    padding: 0 8px;
+    margin-left: 6px;
+}
+.contact{
+  position: relative;
+  & .badge{
+    display: inline-block;
+    text-align: center;
+    background: #f74c31;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 14px;
+    line-height: 1.2;
+    padding: 0 4px;
+    position: absolute;
+    top: -10px;
+    right: -20px;
+  }
+}
+
 </style>
