@@ -44,8 +44,8 @@
               </div>
             </div>
             <div class="btns">
-              <span class="btn">控车</span>
-              <span class="btn">设置</span>
+              <span class="btn" @click="naviToControlCar(2)">控车</span>
+              <span class="btn" @click="naviToCarSetting(2)">设置</span>
             </div>
           </div>
         </div>
@@ -78,8 +78,8 @@
               </div>
             </div>
             <div class="btns">
-              <span class="btn">控车</span>
-              <span class="btn">设置</span>
+              <span class="btn" @click="naviToControlCar(2)">控车</span>
+              <span class="btn" @click="naviToCarSetting(2)">设置</span>
             </div>
           </div>
         </div>
@@ -120,8 +120,8 @@
               </div>
             </div>
             <div class="btns">
-              <span class="btn lightGrey">取消</span>
-              <span class="btn darkGreen">确认</span>
+              <span class="btn lightGrey" @click="cancelOrder">取消</span>
+              <span class="btn darkGreen" @click="sureOrder">确认</span>
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@
               </div>
             </div>
             <div class="btns">
-              <span class="btn">控车</span>
+              <span class="btn" @click="naviToControlCar(2)">控车</span>
             </div>
           </div>
         </div>
@@ -203,8 +203,8 @@
               </div>
             </div>
             <div class="btns">
-              <span class="btn">退押金</span>
-              <span class="btn darkGreen">违章确认</span>
+              <span class="btn" @click="naviToDepositManage(2)">退押金</span>
+              <span class="btn darkGreen" @click="naviToPeccancyQuery">违章确认</span>
               <span class="btn darkGreen">车辆确认</span>
             </div>
           </div>
@@ -321,7 +321,35 @@ export default {
     },
     naviToCarOrderList(carId){
       this.$router.push({ path: `/manage/carOrderList/${carId}`});
+    },
+    naviToControlCar(carId){
+      this.$router.push({ path: `/car/controlCar/${carId}` });
+    },
+    naviToCarSetting(carId){
+      this.$router.push({ path: `/car/carSetting/${carId}` });
+    },
+    cancelOrder(){
+      this.$vux.confirm.show({
+        title:"确定取消订单？",
+        content:"",
+        onCancel :()=>{},
+        onConfirm :()=>{}
+      });
+    },
+    sureOrder(){
+      this.$vux.confirm.show({
+        title:"",
+        content:"<div>已核查该用户全部资料</div><div>确定租车给该用户</div>",
+        onCancel :()=>{},
+        onConfirm :()=>{}
+      });
+    },
 
+    naviToDepositManage(carId){
+      this.$router.push({ path: `/manage/depositManage/${this.$route.params.carId}` });
+    },
+    naviToPeccancyQuery(){
+      this.$router.push({ path: `/car/peccancyQuery/${this.$route.params.carId}` });
     }
   }
 }

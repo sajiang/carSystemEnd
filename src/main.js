@@ -5,8 +5,9 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 
-import  { AlertPlugin } from 'vux'
+import  { AlertPlugin,ConfirmPlugin  } from 'vux'
 Vue.use(AlertPlugin)
+Vue.use(ConfirmPlugin)
 
 axios.defaults.baseURL = 'http://112.67.253.146:8011/api/';
 axios.interceptors.response.use(function (response) {

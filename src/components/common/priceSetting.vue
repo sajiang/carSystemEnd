@@ -1,6 +1,6 @@
 <template>
   <div class="priceSetting">
-    <div @click="infoPanelShow=true">
+    <div @click="$emit('update:show', true)">
       <div class="flexBox outPN">
         <div class="flex1 bold">
           设置出租价格
@@ -28,7 +28,7 @@
 
       </div>
     </div>
-    <div class="infoPanel" v-show="infoPanelShow">
+    <div class="infoPanel" v-show="show">
       <group gutter="0" label-width="118px">
         <x-input class="input" title="车辆租金：" placeholder="请填写" v-model="priceSetting.price">
           <span slot="right">元/天</span>
@@ -58,7 +58,7 @@ export default {
     XInput,
     Group
   },
-  props:["initialPriceSetting"],
+  props:["initialPriceSetting","show"],
   watch:{
     initialPriceSetting:function(){
       this.priceSetting=this.initialPriceSetting;
@@ -66,13 +66,12 @@ export default {
   },
   data(){
   	return{
-      infoPanelShow:false,
       priceSetting:this.initialPriceSetting
   	}
   },
   methods:{
   	returnData(){
-      this.infoPanelShow=false;
+      this.$emit('update:show', false);
       this.$emit("pricesettingcomplete",this.priceSetting);
     }
   }

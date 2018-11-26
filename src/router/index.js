@@ -40,8 +40,17 @@ export default new Router({
    
 
     //上传车辆信息
-    { path: '/submitCarInfo/createNewCar', component: resolve => require(['@/components/submitCarInfo/createNewCar'], resolve) },
-
+    { path: '/car/createNewCar', component: resolve => require(['@/components/car/createNewCar'], resolve) },
+    //控车
+    { path: '/car/controlCar/:carId', component: resolve => require(['@/components/car/controlCar'], resolve) },
+    //车辆设置
+    { path: '/car/carSetting/:carId', component: resolve => require(['@/components/car/carSetting'], resolve) },
+    //租车人信息
+    { path: '/car/rentCarPersonInfo/:carId', component: resolve => require(['@/components/car/rentCarPersonInfo'], resolve) },
+    //违章信息查询
+    { path: '/car/peccancyQuery/:carId', component: resolve => require(['@/components/car/peccancyQuery'], resolve) },
+  
+  
     //车辆评价
     { path: '/manage/carComments/:carId', component: resolve => require(['@/components/manage/carComments'], resolve) },
     //历史轨迹
@@ -50,7 +59,9 @@ export default new Router({
     { path: '/manage/carOrderList/:carId', component: resolve => require(['@/components/manage/carOrderList'], resolve) },
     //车辆当前订单详情
     { path: '/manage/carCurOrderDetail/:carId', component: resolve => require(['@/components/manage/carCurOrderDetail'], resolve) },
-    
+    //退押金
+    { path: '/manage/depositManage/:carId', component: resolve => require(['@/components/manage/depositManage'], resolve) },
+      
 
     //提现
     { path: '/personalCenter/withdrawCash', component: resolve => require(['@/components/personalCenter/withdrawCash'], resolve) },

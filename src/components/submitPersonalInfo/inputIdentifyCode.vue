@@ -52,7 +52,7 @@ export default {
       }
     },
     naviToCreateNewCar(){
-      this.$router.push({ path: `/submitCarInfo/createNewCar`});
+      this.$router.push({ path: `/car/createNewCar`});
     }
   }
 }

@@ -2,10 +2,10 @@
   <div class="createNewCar">
     <div>
       <div class="inputWapper">
-        <input class="input" type="number"  v-model="companyName" placeholder="请填写公司名称">
+        <input class="input"  v-model="companyName" placeholder="请填写公司名称">
       </div>
     </div>
-    <base-info-of-car :initial-base-info="baseInfo" @baseinfocomplete="saveBaseInfo"></base-info-of-car>
+    <base-info-of-car :show.sync="baseInfoShow" :initial-base-info="baseInfo" @baseinfocomplete="saveBaseInfo"></base-info-of-car>
     <div class="pics flexBox">
       <div class="uploadWapper">
         <img v-if="!carImg.front.imgDataUrl" class="idCardImg" src="../../assets/img/upload1.png">
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="infoBlock">
-      <rr-position-setting :initial-rent-pos="positionInfo.rentPos" :initial-return-pos="positionInfo.returnPos" @positioninfocomplete="savePosition"></rr-position-setting>
+      <rr-position-setting :show.sync="positionInfoShow" :initial-rent-pos="positionInfo.rentPos" :initial-return-pos="positionInfo.returnPos" @positioninfocomplete="savePosition"></rr-position-setting>
     </div>
     <div class="infoBlock">
       <div class="bold font32">设置出租时间</div>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="infoBlock">
-      <price-setting :initial-price-setting="priceSetting" @pricesettingcomplete="savePriceSetting"></price-setting>
+      <price-setting :show.sync="priceSetingShow" :initial-price-setting="priceSetting" @pricesettingcomplete="savePriceSetting"></price-setting>
     </div>
     <div class="flexBox btns">
       <div class=" flex1 center">
@@ -89,18 +89,33 @@ export default {
     'price-setting':priceSetting,
     Datetime,
   },
+  beforeRouteLeave(to, from, next){
+    if (this.baseInfoShow) {
+      this.baseInfoShow=false;
+      return;
+    }
+    if (this.positionInfoShow) {
+      this.positionInfoShow=false;
+      return;
+    }
+    if (this.priceSetingShow) {
+      this.priceSetingShow=false;
+      return;
+    }
+    else{
+      next();
+    }
+  },
   data(){
   	return{
+      baseInfoShow:false,
+      positionInfoShow:false,
+      priceSetingShow:false,
       companyName:'',
       baseInfo:{
-        plateNumber:"A0064",
-        value:"31",
-        arr:[],
-        arr1:[],
-        arr2:[],
-        arr3:[],
-        arr4:[],
-        carLicense:{}
+        plateNumber:"",
+        carLicense:{},
+        value:"",
       },
       carImg:{
         front:{},
@@ -109,17 +124,6 @@ export default {
       },
       positionInfo:{
         rentPos:{
-          adcode:"460106",
-          building:"",
-          city:"海口市",
-          citycode:"0898",
-          detailPos:"龙昆北路2号2幢",
-          district:"龙华区",
-          formattedAddress:"海南省海口市龙华区金贸街道海南省围棋协会",
-          province:"海南省",
-          street:"龙昆北路",
-          streetNumber:'2号2幢',
-          township:"金贸街道"
         },
         returnPos:{},
       },
@@ -129,15 +133,11 @@ export default {
       startTime: '',
       endTime:'',
       rangeDay:0,
-      priceSetting:{
-        price:1,
-        price2:1,
-        price3:1,
-        price4:1,
-        price5:1,
-        price6:1,
-      },
+      priceSetting:{},
   	}
+  },
+  beforeRouteLeave(to, from, next){
+    console.log(to)
   },
   methods:{
   	saveCarFront(e){

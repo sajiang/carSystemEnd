@@ -58,7 +58,7 @@
         <div class="red font24 mgt10" v-if="curStatus.status==4">时间已到用户未还车，将会自动锁车用户无法使用</div>
       </div>
       <div class="borderBottom pd20" v-if="curStatus.status>2">
-        <div class="right darkGreen font30 bold " v-if="curStatus.status>3">  <span @click="toCarHistory">轨迹查询</span>
+        <div class="right darkGreen font30 bold " v-if="curStatus.status>3">  <span @click="naviToCarHistory">轨迹查询</span>
         </div>
         <div class="font30">
           <div>
@@ -87,7 +87,7 @@
       <div class="borderBottom pd20 font30" v-if="curStatus.status>2">
         <div class="flexBox">
           <div class="flex1">取车人信息</div>
-          <div class="bold darkGreen">查看全部资料</div>
+          <div class="bold darkGreen" @click="naviToCheckAllData">查看全部资料</div>
         </div>
         <div class="flexBox mgt10">
           <div class="flex1 lightGrey">姓名</div>
@@ -162,16 +162,16 @@
     <div class="bottom">
       <div v-if="curStatus.status==1||curStatus.status==2" class="flexBox">
         <div class="flex1"></div>
-        <div class="btn">控车</div>
-        <div class="btn">设置</div>
+        <div class="btn" @click="naviToControlCar">控车</div>
+        <div class="btn" @click="naviToCarSetting">设置</div>
       </div>
       <div class="flexBox" v-else>
         <div class="flex1"><span>客服</span></div>
-        <div class="btn lightGrey" v-if="curStatus.status==3">取消</div>
-        <div class="btn darkGreen" v-if="curStatus.status==3">确认</div>
-        <div class="btn darkGreen" v-if="curStatus.status==4">控车</div>
-        <div class="btn lightGrey" v-if="curStatus.status==5">退押金</div>
-        <div class="btn darkGreen" v-if="curStatus.status==5">违章确认</div>
+        <div class="btn lightGrey" v-if="curStatus.status==3" @click="cancelOrder">取消</div>
+        <div class="btn darkGreen" v-if="curStatus.status==3" @click="sureOrder">确认</div>
+        <div class="btn darkGreen" v-if="curStatus.status==4" @click="naviToControlCar">控车</div>
+        <div class="btn lightGrey" v-if="curStatus.status==5" @click="naviToDepositManage">退押金</div>
+        <div class="btn darkGreen" v-if="curStatus.status==5" @click="naviToPeccancyQuery">违章确认</div>
         <div class="btn darkGreen" v-if="curStatus.status==5">车辆确认</div>
       </div>
     </div>
@@ -236,14 +236,48 @@ export default {
     }
   },
   methods:{
-    toCarHistory(){
+    naviToCarHistory(){
       this.$router.push({ path: `/manage/carHistory/${this.$route.params.carId}` });
     },
+    naviToControlCar(){
+      this.$router.push({ path: `/car/controlCar/${this.$route.params.carId}` });
+    },
+    naviToCarSetting(){
+      this.$router.push({ path: `/car/carSetting/${this.$route.params.carId}` });
+    },
+    cancelOrder(){
+      this.$vux.confirm.show({
+        title:"确定取消订单？",
+        content:"",
+        onCancel :()=>{},
+        onConfirm :()=>{}
+      });
+    },
+    sureOrder(){
+      this.$vux.confirm.show({
+        title:"",
+        content:"<div>已核查该用户全部资料</div><div>确定租车给该用户</div>",
+        onCancel :()=>{},
+        onConfirm :()=>{}
+      });
+    },
+    naviToCheckAllData(){
+      this.$router.push({ path: `/car/rentCarPersonInfo/${this.$route.params.carId}` });
+    },
+    naviToDepositManage(){
+      this.$router.push({ path: `/manage/depositManage/${this.$route.params.carId}` });
+    },
+    naviToPeccancyQuery(){
+      this.$router.push({ path: `/car/peccancyQuery/${this.$route.params.carId}` });
+    }
   }
 }
 </script>
 <style scoped>
 @import "../../assets/css/common.css";
+.carCurOrderDetail{
+  padding-bottom: 104px;
+}
 .tel{
   color: var(--backGreen);
   text-decoration: underline;
@@ -291,6 +325,11 @@ export default {
 .bottom{
   padding:20px 40px;
   font-size: 30px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
   & .btn{
     border-radius: 30px;
     width: 150px;

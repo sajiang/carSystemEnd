@@ -1,6 +1,6 @@
 <template>
   <div class="baseInfoOfCar">
-    <div @click="infoPanelShow=true">
+    <div @click="$emit('update:show', true)">
       <div class="flexBox outPN">
         <div class="flex1 bold">
           {{baseInfo.plateNumber?baseInfo.plateNumber:'车牌号'}}
@@ -9,9 +9,9 @@
       </div>
       <div class="subInfo">{{infoStr?infoStr:"填写基本资料"}}</div>
     </div>
-    <div class="infoPanel" v-show="infoPanelShow">
+    <div class="infoPanel" v-show="show">
       <group gutter="0" label-width="118px">
-        <x-input title="车牌号：" placeholder="请填写" v-model="baseInfo.plateNumber"></x-input>
+        <x-input title="车牌号：" placeholder="请填写" :disabled="Boolean(baseInfo.cannotRewritePlateNum)" v-model="baseInfo.plateNumber"></x-input>
         <popup-picker ref="brand" title="品牌：" :show-name=true value-text-align="left" placeholder="请选择" :data="list" v-model="baseInfo.arr"></popup-picker>
         <popup-picker ref="type" title="型号：" :show-name=true value-text-align="left" placeholder="请选择" :data="list1" v-model="baseInfo.arr1"></popup-picker>
         <popup-picker ref="con" title="操作：" :show-name=true value-text-align="left" placeholder="请选择" :data="list2" v-model="baseInfo.arr2"></popup-picker>
@@ -47,7 +47,7 @@ export default {
     Group,
     "s-upload-img":uploadImg
   },
-  props:["initialBaseInfo"],
+  props:["initialBaseInfo","show"],
   watch:{
     initialBaseInfo:function(){
       this.baseInfo=this.initialBaseInfo;
@@ -56,7 +56,6 @@ export default {
   data(){
   	return{
       isMounted: false,
-      infoPanelShow:false,
       baseInfo:this.initialBaseInfo,
       list: [[{
         name: 'BMW',
@@ -126,7 +125,7 @@ export default {
       this.baseInfo.carLicense=e.imgObjs;
     },
     returnData(){
-      this.infoPanelShow=false;
+      this.$emit('update:show', false);
       this.$emit("baseinfocomplete",this.baseInfo);
     }
   }

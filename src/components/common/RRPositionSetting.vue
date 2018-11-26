@@ -1,6 +1,6 @@
 <template>
   <div class="RRPositionSetting">
-    <div @click="infoPanelShow=true">
+    <div @click="$emit('update:show', true);">
       <div class="flexBox outPN">
         <div class="flex1 bold">
           设置取车还车地点
@@ -12,7 +12,7 @@
         <div>{{this.returnPos.formattedAddress?this.returnPos.formattedAddress:'还车地点'}}</div>
       </div>
     </div>
-    <div class="infoPanel" v-show="infoPanelShow">
+    <div class="infoPanel" v-show="show">
       <div class="set">
         <div class="flexBox title">
           <div class="flex1">取车地点</div>
@@ -75,7 +75,7 @@ export default {
   components:{
     XButton
   },
-  props:["initialRentPos","initialReturnPos"],
+  props:["initialRentPos","initialReturnPos","show"],
   watch:{
     initialRentPos:function(){
       this.rentPos=this.initialRentPos;
@@ -86,7 +86,6 @@ export default {
   },
   data(){
   	return{
-      infoPanelShow:false,
       isShowPos:false,
       map:null,
       curpos:'',
@@ -166,7 +165,7 @@ export default {
       }
     },
     returnData(){
-      this.infoPanelShow=false;
+      this.$emit('update:show', false);
       this.$emit("positioninfocomplete",{rentPos:this.rentPos,returnPos:this.returnPos});
     }
   }
