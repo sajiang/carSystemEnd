@@ -12,14 +12,14 @@
         <div class="tab">管理<span class="greenBadge">11</span></div>
         <div class="underlineWrap" ><span class="underline"></span></div>
       </router-link>
-      <router-link class="navItem" to="/tourism">
+      <router-link class="navItem" to="/invokeCar/invokeCarList">
         <div class="tab">调车<span class="greenBadge">2</span></div>
         <div class="underlineWrap" ><span class="underline"></span></div>
       </router-link>
-      <a class="contact relative" href="">
+      <router-link class="contact relative" to="/personalCenter/messageCenter">
         <img class="icon" src="../assets/img/i-message.png">
         <span class="badge">10</span>
-      </a>
+      </router-link>
     </div>
     <keep-alive>
       <router-view class="tabContent"/>

@@ -12,43 +12,35 @@
       </div>
     </div>
     <div class="sections">
-      <div class="section" @click="naviToOrderList">
+      <div class="section flexBox" @click="naviToPeccancyQuery">
         <div class="iconWrap">
-          <img src="../../assets/img/i-order.png">
+          <img src="../../assets/img/i-peccancy.png">
         </div>
-        <div>
-          <div class="title">租车订单</div>
-          <div class="desc">2车正在行驶</div>
-        </div>
+        <div class="flex1 bold">违章查询</div>
+        <img class="arrowRight" src="../../assets/img/i-arrowRight.png">
       </div>
-      <div class="section" @click="naviToCouponManage">
-        <div class="iconWrap">
-          <img src="../../assets/img/i-discountManage.png">
-        </div>
-        <div>
-          <div class="title">优惠券管理</div>
-          <div class="desc">有优惠券<span class="red">未使用</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="sections mgt40">
-      <div class="section" @click="naviToMessageCenter">
-        <div class="iconWrap">
-          <img src="../../assets/img/i-messageCenter.png">
-        </div>
-        <div>
-          <div class="title">消息中心</div>
-          <div class="desc">有<span class="red">5</span>条未读消息</div>
-        </div>
-      </div>
-      <div class="section" @click="naviToDepositManage">
+      <div class="section flexBox" @click="naviToManageBank">
         <div class="iconWrap">
           <img src="../../assets/img/i-deposit.png">
         </div>
-        <div>
-          <div class="title">押金管理</div>
-          <div class="desc">可退押金2000元</div>
+        <div class="flex1 bold">银行卡管理</div>
+        <div class="sub">提现记录</div>
+        <img class="arrowRight" src="../../assets/img/i-arrowRight.png">
+      </div>
+      <div class="section flexBox" @click="naviToSetPassword">
+        <div class="iconWrap">
+          <img src="../../assets/img/i-discountManage.png">
         </div>
+        <div class="flex1 bold">支付设置</div>
+        <img class="arrowRight" src="../../assets/img/i-arrowRight.png">
+      </div>
+      <div class="section flexBox" @click="naviToMessageCenter">
+        <div class="iconWrap">
+          <img src="../../assets/img/i-messageCenter.png">
+        </div>
+        <div class="flex1 bold">消息中心</div>
+        <div class="sub">有<span class="red">5</span>条未读消息</div>
+        <img class="arrowRight" src="../../assets/img/i-arrowRight.png">
       </div>
     </div>
   </div>
@@ -64,18 +56,18 @@ export default {
   	}
   },
   methods:{
-  	naviToOrderList(){
-      this.$router.push({ path: `/personalCenter/orderList` });
-    },
-    naviToCouponManage(){
-      this.$router.push({ path: `/personalCenter/couponManage` });
+    naviToPeccancyQuery(){
+      this.$router.push({ path: `/car/peccancyQuery` });
     },
     naviToMessageCenter(){
       this.$router.push({ path: `/personalCenter/messageCenter` });
     },
-    naviToDepositManage(){
-      this.$router.push({ path: `/personalCenter/depositManage` });
-    }
+  	naviToSetPassword(){
+      this.$router.push({ path: `/submitPersonalInfo/setPayPassword` });
+    },
+    naviToManageBank(){
+      this.$router.push({ path: `/personalCenter/manageBank` });
+    },
   }
 }
 </script>
@@ -88,7 +80,6 @@ export default {
   margin-top: 40px;
 }
 .account{
-  margin: 50px 30px 70px 30px;
   height: 216px;
   position: relative;
   & .bg{
@@ -127,14 +118,10 @@ export default {
 }
 .sections{
   padding: 0 30px;
-  display: flex;
-  justify-content: space-between;
 }
 .section{
-  width: 320px;
-  height: 196px;
-  box-shadow: 0 0 20px #CCC;
-  border-radius: 20px;
+  height: 135px;
+  border-bottom: 1Px solid var(--border-grey);
   & .iconWrap {
     text-align: right;
     & img{
@@ -143,17 +130,14 @@ export default {
       height: 68px;
     }
   }
-  & .title{
-    line-height: 1;
-    margin: 0px 0 0 34px;
-    font-weight: bold;
-  }
-  & .desc{
-    line-height: 1;
+  & .sub{
     font-size: 28px;
     color: var(--grey9);
-    margin-left: 34px;
-    margin-top: 10px;
+    margin-right: 5px;
+  }
+  & .arrowRight{
+    width: 11px;
+    height: 18px;
   }
 }
 </style>

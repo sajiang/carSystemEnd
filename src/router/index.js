@@ -19,6 +19,10 @@ export default new Router({
       },{
         path: '/manage/manageIndex',
         component: resolve => require(['@/components/manage/manageIndex'], resolve)
+      },{
+        
+        path: '/invokeCar/invokeCarList',
+        component: resolve => require(['@/components/invokeCar/invokeCarList'], resolve)
       }]
     },
     //绑定手机号
@@ -49,6 +53,9 @@ export default new Router({
     { path: '/car/rentCarPersonInfo/:carId', component: resolve => require(['@/components/car/rentCarPersonInfo'], resolve) },
     //违章信息查询
     { path: '/car/peccancyQuery/:carId', component: resolve => require(['@/components/car/peccancyQuery'], resolve) },
+    { path: '/car/peccancyQuery', component: resolve => require(['@/components/car/peccancyQuery'], resolve) },
+    //车辆确认
+    { path: '/car/carCheck/:carId', component: resolve => require(['@/components/car/carCheck'], resolve) },
   
   
     //车辆评价
@@ -62,11 +69,21 @@ export default new Router({
     //退押金
     { path: '/manage/depositManage/:carId', component: resolve => require(['@/components/manage/depositManage'], resolve) },
       
+    //创建调车
+    { path: '/invokeCar/createInvokeCarOrder', component: resolve => require(['@/components/invokeCar/createInvokeCarOrder'], resolve) },
+    //调车订单详情
+    { path: '/invokeCar/invokeCarDetail', component: resolve => require(['@/components/invokeCar/invokeCarDetail'], resolve) },
 
+    //个人中心
+    { path: '/personalCenter/index', component: resolve => require(['@/components/personalCenter/index'], resolve) },
     //提现
     { path: '/personalCenter/withdrawCash', component: resolve => require(['@/components/personalCenter/withdrawCash'], resolve) },
-
-
+    //提现记录
+    { path: '/personalCenter/withdrawRecord', component: resolve => require(['@/components/personalCenter/withdrawRecord'], resolve) },
+    //消息中心
+    { path: '/personalCenter/messageCenter', component: resolve => require(['@/components/personalCenter/messageCenter'], resolve) },
+    //银行卡管理
+    { path: '/personalCenter/manageBank', component: resolve => require(['@/components/personalCenter/manageBank'], resolve) },
 
   ]
 })

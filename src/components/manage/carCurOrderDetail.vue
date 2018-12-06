@@ -172,7 +172,7 @@
         <div class="btn darkGreen" v-if="curStatus.status==4" @click="naviToControlCar">控车</div>
         <div class="btn lightGrey" v-if="curStatus.status==5" @click="naviToDepositManage">退押金</div>
         <div class="btn darkGreen" v-if="curStatus.status==5" @click="naviToPeccancyQuery">违章确认</div>
-        <div class="btn darkGreen" v-if="curStatus.status==5">车辆确认</div>
+        <div class="btn darkGreen" v-if="curStatus.status==5" @click="naviToCarCheck">车辆确认</div>
       </div>
     </div>
   </div>
@@ -269,6 +269,9 @@ export default {
     },
     naviToPeccancyQuery(){
       this.$router.push({ path: `/car/peccancyQuery/${this.$route.params.carId}` });
+    },
+    naviToCarCheck(){
+      this.$router.push({ path: `/car/carCheck/${this.$route.params.carId}` });
     }
   }
 }
@@ -312,7 +315,7 @@ export default {
     font-size: 24px;
     color: white;
     position: absolute;
-    top: 0;
+    top: 2px;
     left: 0;
     margin:4px 6px;
   }

@@ -205,7 +205,7 @@
             <div class="btns">
               <span class="btn" @click="naviToDepositManage(2)">退押金</span>
               <span class="btn darkGreen" @click="naviToPeccancyQuery">违章确认</span>
-              <span class="btn darkGreen">车辆确认</span>
+              <span class="btn darkGreen"  @click="naviToCarCheck">车辆确认</span>
             </div>
           </div>
           <div class="carItem">
@@ -350,6 +350,9 @@ export default {
     },
     naviToPeccancyQuery(){
       this.$router.push({ path: `/car/peccancyQuery/${this.$route.params.carId}` });
+    },
+    naviToCarCheck(){
+      this.$router.push({ path: `/car/carCheck/${this.$route.params.carId}` });
     }
   }
 }
