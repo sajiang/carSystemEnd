@@ -11,15 +11,99 @@
       </div>
     </div>
     <div class="mainContent">
-      <tab :scroll-threshold="5" class="font30">
+      <tab :scroll-threshold="5" class="font30 tab">
         <tab-item selected @on-item-click="onItemClick">闲置</tab-item>
         <tab-item @on-item-click="onItemClick">待出租</tab-item>
         <tab-item @on-item-click="onItemClick">待确认<span class="darkGreen bold">1</span></tab-item>
         <tab-item @on-item-click="onItemClick">已出租</tab-item>
         <tab-item @on-item-click="onItemClick">待审核<span class="darkGreen bold">2</span></tab-item>
       </tab>
-      <div>
+      <div class="scrollContent">
         <div v-show="spareCar.show">
+          <div class="carItem">
+            <div class="relative">
+              <img class="flagBg" src="../../assets/img/flagBgGrey.png">
+              <span class="flagLabel">闲置</span>
+            </div>
+            <div class="flexBox info">
+              <div class="flex1 font36 bold">琼A9630</div>
+              <img src="../../assets/img/i-arrowRight3.png" @click="naviToCarOrderList(3)" class="icon">
+            </div>
+            <div class="flexBox info">
+              <div class=" flexBox">
+                <img src="../../assets/img/i-pos.png" class="icon">
+                <span class="font30 lightGrey mgl10">海口</span>
+              </div>
+              <div class=" flexBox">
+                <img src="../../assets/img/i-preview.png" class="icon">
+                <span class="font30 lightGrey mgl10">1668</span>
+              </div>
+              <div class=" flexBox">
+                <img src="../../assets/img/i-comment.png" class="icon">
+                <span class="font30 lightGrey mgl10">6</span>
+              </div>
+            </div>
+            <div class="btns">
+              <span class="btn" @click="naviToControlCar(2)">控车</span>
+              <span class="btn" @click="naviToCarSetting(2)">设置</span>
+            </div>
+          </div>
+          <div class="carItem">
+            <div class="relative">
+              <img class="flagBg" src="../../assets/img/flagBgGrey.png">
+              <span class="flagLabel">闲置</span>
+            </div>
+            <div class="flexBox info">
+              <div class="flex1 font36 bold">琼A9630</div>
+              <img src="../../assets/img/i-arrowRight3.png" @click="naviToCarOrderList(3)" class="icon">
+            </div>
+            <div class="flexBox info">
+              <div class=" flexBox">
+                <img src="../../assets/img/i-pos.png" class="icon">
+                <span class="font30 lightGrey mgl10">海口</span>
+              </div>
+              <div class=" flexBox">
+                <img src="../../assets/img/i-preview.png" class="icon">
+                <span class="font30 lightGrey mgl10">1668</span>
+              </div>
+              <div class=" flexBox">
+                <img src="../../assets/img/i-comment.png" class="icon">
+                <span class="font30 lightGrey mgl10">6</span>
+              </div>
+            </div>
+            <div class="btns">
+              <span class="btn" @click="naviToControlCar(2)">控车</span>
+              <span class="btn" @click="naviToCarSetting(2)">设置</span>
+            </div>
+          </div>
+          <div class="carItem">
+            <div class="relative">
+              <img class="flagBg" src="../../assets/img/flagBgGrey.png">
+              <span class="flagLabel">闲置</span>
+            </div>
+            <div class="flexBox info">
+              <div class="flex1 font36 bold">琼A9630</div>
+              <img src="../../assets/img/i-arrowRight3.png" @click="naviToCarOrderList(3)" class="icon">
+            </div>
+            <div class="flexBox info">
+              <div class=" flexBox">
+                <img src="../../assets/img/i-pos.png" class="icon">
+                <span class="font30 lightGrey mgl10">海口</span>
+              </div>
+              <div class=" flexBox">
+                <img src="../../assets/img/i-preview.png" class="icon">
+                <span class="font30 lightGrey mgl10">1668</span>
+              </div>
+              <div class=" flexBox">
+                <img src="../../assets/img/i-comment.png" class="icon">
+                <span class="font30 lightGrey mgl10">6</span>
+              </div>
+            </div>
+            <div class="btns">
+              <span class="btn" @click="naviToControlCar(2)">控车</span>
+              <span class="btn" @click="naviToCarSetting(2)">设置</span>
+            </div>
+          </div>
           <div class="carItem">
             <div class="relative">
               <img class="flagBg" src="../../assets/img/flagBgGrey.png">
@@ -365,7 +449,12 @@ export default {
 .income{
   text-align: center;
   padding-top: 30px;
-  position: relative;
+  background-color: white;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 108px;
   & .bg{
     width: 710px;
     height: 184px;
@@ -392,8 +481,25 @@ export default {
     color: white;
   }
 }
+.tab{
+  position: fixed;
+  left: 30px;
+  right: 30px;
+  top: 318px;
+  z-index: 1;
+  background-color: white;
+}
+.scrollContent{
+  position: fixed;
+  top: 400px;
+  bottom: 0;
+  left: 30px;right: 30px;
+  overflow-y: scroll;
+}
+.scrollContent::-webkit-scrollbar {
+    display: none;
+}
 .mainContent{
-  padding: 0 30px;
   & /deep/ .vux-tab-selected{
     font-weight: bold;
   }

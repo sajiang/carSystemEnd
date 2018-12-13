@@ -161,7 +161,7 @@ export default {
   },
   methods:{
     naviToAddCar(){
-      this.$router.push({ path: `/submitCarInfo/createNewCar` });
+      this.$router.push({ path: `/car/createNewCar` });
     },
     toCarDetail(carId){
       this.$router.push({ path: `/manage/carDetail/${carId}` });

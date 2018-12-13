@@ -136,9 +136,6 @@ export default {
       priceSetting:{},
   	}
   },
-  beforeRouteLeave(to, from, next){
-    console.log(to)
-  },
   methods:{
   	saveCarFront(e){
       this.carImg.front=e.imgObjs;

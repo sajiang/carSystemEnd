@@ -49,13 +49,17 @@ export default {
   height: var(--navHeight);
   padding: 0 40px;
   box-shadow:0px 1Px 20px #ccc;
-  position: relative;
-  z-index: 1;
+  z-index: 2;
   font-size: 32px;
   font-weight: bold;
   display: flex;
   align-items:center ;
   justify-content:center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: white;
   & .personalCenter{
     padding-right: 80px;
     & img{
@@ -96,7 +100,9 @@ export default {
   }
 }
 .tabContent{
+  margin-top: var(--navHeight);
   height: calc(100vh - var(--navHeight));
+
 }
 .greenBadge{
    display: inline-block;

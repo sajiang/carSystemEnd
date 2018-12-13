@@ -132,7 +132,12 @@ export default {
 .income{
   text-align: center;
   padding-top: 30px;
-  position: relative;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 108px;
+  background-color: white;
+  z-index: 1;
   & .bg{
     width: 710px;
     height: 184px;
@@ -161,6 +166,13 @@ export default {
 }
 .orderList{
   padding: 35px;
+  position: fixed;
+  top: 300px;
+  bottom: 0;
+  overflow-y: scroll;
+}
+.orderList::-webkit-scrollbar {
+    display: none;
 }
 .orderItem{
   padding: 10px 0;
